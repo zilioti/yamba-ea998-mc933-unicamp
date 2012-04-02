@@ -7,5 +7,9 @@
     <string name="password">Senha:</string>
     <string name="login">Login</string>
     
+    <string name="summaryuser">Digite o nome do usuário</string>
+    <string name="summarypass">Digite a senha do usuário</string>
+    <string name="apiroot">Servidor:</string>
+    <string name="summaryroot">Digite o endereco do servidor</string>
 
 </resources>
