@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    
+    <string name="app_name">YambaUnicamp</string>
+	<string name="titleYamba">Yamba</string>
+	<string name="titleStatus">Atualizar Status INGLES</string>
+	<string name="hintText">Entre com o status de até 140 caracteres INGLES</string>
+	<string name="buttonUpdate">Atualizar INGLES</string>
+    
+    
+    <string name="user">Usuário:</string>
+    <string name="password">Senha:</string>
+    <string name="login">Login</string>
+    
+    <string name="summaryuser">Digite o nome do usuário</string>
+    <string name="summarypass">Digite a senha do usuário</string>
+    <string name="apiroot">Servidor:</string>
+    <string name="summaryroot">Digite o endereco do servidor</string>
+
+</resources>
