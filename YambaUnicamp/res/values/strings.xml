@@ -20,5 +20,9 @@
     
     <string name="menu">Menu de Opções</string>
     
+    <string name="titleServiceStart">Start service</string>
+    
+    <string name="titleServiceStop">Service Stop</string>
+    
 
 </resources>

@@ -3,11 +3,9 @@ package br.unicamp.yamba;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,7 +22,7 @@ import winterwell.jtwitter.Twitter;
 import winterwell.jtwitter.TwitterException;
 
 
-public class StatusActivity extends Activity implements OnClickListener, TextWatcher, OnSharedPreferenceChangeListener {
+public class StatusActivity extends Activity implements OnClickListener, TextWatcher{
 	
 	private static final String TAG = "StatusActivity";
 	EditText editText;
@@ -54,27 +52,12 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
         editText.addTextChangedListener(this);
 
         
-        prefs = PreferenceManager.getDefaultSharedPreferences(this); 
-        prefs.registerOnSharedPreferenceChangeListener(this);
         
 
     }
 	
 	
 	
-	private Twitter getTwitter() {
-	    if (twitter == null) {
-	      String username, password, apiRoot;
-	      username = prefs.getString("user", "");
-	      password = prefs.getString("pass", "");
-	      apiRoot = prefs.getString("apiroot", "http://yamba.marakana.com/api");
-
-	      // Connect to twitter service
-	      twitter = new Twitter(username, password);
-	      twitter.setAPIRootUrl(apiRoot);
-	    }
-	    return twitter;
-	  }
 	
 	// Called first time user clicks on the menu button
 	@Override
@@ -88,10 +71,19 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case R.id.itemPrefs:
-				startActivity(new Intent(this, PrefsActivity.class)); 
+			case R.id.itemServiceStart:
+				startService(new Intent(this, UpdaterService.class));
 				break;
-			}
+			
+			case R.id.itemServiceStop:
+				stopService(new Intent(this, UpdaterService.class));
+				break;
+		
+			case R.id.itemPrefs:
+				startActivity(new Intent(this, PrefsActivity.class));
+				break;
+		}
+
 		return true;
 	}
 
@@ -138,8 +130,9 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
 	    @Override
 	    protected String doInBackground(String... statuses) {
 	      try {
-	        Twitter.Status status = getTwitter().updateStatus(statuses[0]);
-	        return status.text;
+	    	  YambaApplication yamba = ((YambaApplication) getApplication()); 
+	    	  Twitter.Status status = yamba.getTwitter().updateStatus(statuses[0]);
+	    	  return status.text;
 	      } catch (TwitterException e) {
 	        Log.e(TAG, e.toString());
 	        e.printStackTrace();
@@ -162,16 +155,6 @@ public class StatusActivity extends Activity implements OnClickListener, TextWat
 
 	}
 
-
-
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-			String key) {
-		// TODO Auto-generated method stub
-		// invalidate twitter object
-		twitter = null;
-
-		
-	}
 
 
 
