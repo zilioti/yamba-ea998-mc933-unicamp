@@ -3,7 +3,7 @@
 <!-- Main Layout of Status Activity -->
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:background="@drawable/background">
+		android:layout_height="fill_parent" android:background="@drawable/ic_launcher">
 	
 	<!-- Title TextView-->
 		<TextView android:layout_width="fill_parent"

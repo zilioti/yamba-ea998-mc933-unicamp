@@ -17,5 +17,8 @@
     <string name="summarypass">Digite a senha do usuário</string>
     <string name="apiroot">Servidor:</string>
     <string name="summaryroot">Digite o endereco do servidor</string>
+    
+    <string name="menu">Menu de Opções</string>
+    
 
 </resources>
