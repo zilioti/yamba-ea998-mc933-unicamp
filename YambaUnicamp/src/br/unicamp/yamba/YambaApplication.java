@@ -6,6 +6,7 @@ import winterwell.jtwitter.Twitter;
 import winterwell.jtwitter.Twitter.Status;
 import android.app.Application;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.PreferenceManager;
@@ -69,6 +70,10 @@ public class YambaApplication extends Application implements OnSharedPreferenceC
 		return statusData;
 	}
 	
+	public SharedPreferences getPrefs(){
+		return prefs;
+	}
+	
 	// Connects to the online service and puts the latest statuses into DB.
 	// Returns the count of new statuses
 	public synchronized int fetchStatusUpdates() { //
@@ -102,4 +107,6 @@ public class YambaApplication extends Application implements OnSharedPreferenceC
 			return 0;
 		}
 	}
+
+	
 }

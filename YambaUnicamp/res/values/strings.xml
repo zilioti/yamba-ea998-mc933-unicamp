@@ -20,9 +20,19 @@
     
     <string name="menu">Menu de Opções</string>
     
-    <string name="titleServiceStart">Start service</string>
+    <string name="titlePrefs">Pref</string>
     
-    <string name="titleServiceStop">Service Stop</string>
+    <string name="titlePurge">Purge</string>
+    
+    <string name="titleServiceStart">Start</string>
+    
+    <string name="titleServiceStop">Stop</string>
+    
+    <string name="titleTimeline">Timeline</string>
+    
+    <string name="msgAllDataPurged"></string>
+    
+    <string name="msgSetupPrefs"></string>
     
 
 </resources>

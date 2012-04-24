@@ -85,7 +85,7 @@ public class StatusData { //
 	public long getLatestStatusCreatedAtTime() { //
 		SQLiteDatabase db = this.dbHelper.getReadableDatabase();
 		try {
-			Cursor cursor = db.query(TABLE, MAX_CREATED_AT_COLUMNS, null, null, null,null, null);
+			Cursor cursor = db.query(TABLE, MAX_CREATED_AT_COLUMNS, null, null, null, null, null);
 			try {
 				return cursor.moveToNext() ? cursor.getLong(0) : Long.MIN_VALUE;
 			} finally {
@@ -114,5 +114,9 @@ public class StatusData { //
 		} finally {
 			db.close();
 		}
+	}
+
+	public void delete() {
+		
 	}
 }
